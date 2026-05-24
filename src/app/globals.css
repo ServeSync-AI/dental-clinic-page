@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Helvetica Regular";
+  src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot");
+  src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot?#iefix") format("embedded-opentype"),
+       url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff2") format("woff2"),
+       url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff") format("woff"),
+       url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.ttf") format("truetype"),
+       url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.svg#Helvetica Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #FAF8F5; /* Warm luxury white */
+  --foreground: #1A1F26; /* Deep clinical slate */
+  
+  --brand-cream: #FAF8F5;
+  --brand-beige: #F4F0E8;
+  --brand-gold: #C5A880;
+  --brand-gold-dark: #A98C63;
+  --brand-gold-light: #E5DCD0;
+  --medical-blue: #EAF2F8;
+  --medical-blue-dark: #1E3A8A;
+  --medical-blue-light: #3B82F6;
+  --medical-slate: #4A5568;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-beige: var(--brand-beige);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-dark: var(--brand-gold-dark);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-medical-blue: var(--medical-blue);
+  --color-medical-blue-dark: var(--medical-blue-dark);
+  --color-medical-blue-light: var(--medical-blue-light);
+  --color-medical-slate: var(--medical-slate);
+  
+  --font-sans: "Helvetica Regular", var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-wave: wave 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1.0); }
+}
+
+html {
+  font-size: 15px; /* Comfortable mobile base */
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 15.5px;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px; /* Default tablet base */
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 16.5px; /* Laptop base */
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 17.5px; /* Desktop base (10% scale up) */
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 18.5px; /* Ultra-wide scaling (15% scale up) */
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--brand-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-gold-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-gold);
+}
+
+/* Translucent Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.glass-panel-dark {
+  background: rgba(26, 31, 38, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-light-gold {
+  background: rgba(244, 240, 232, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #A98C63 0%, #D4AF37 50%, #C5A880 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-medical-gradient {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-shadow {
+  box-shadow: 0 10px 30px -10px rgba(197, 168, 128, 0.12);
+}
+
+.soft-shadow {
+  box-shadow: 0 20px 40px -15px rgba(26, 31, 38, 0.02);
+}
+
+.gold-ring-pulse {
+  position: relative;
+}
+.gold-ring-pulse::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  border: 2px solid var(--brand-gold);
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
